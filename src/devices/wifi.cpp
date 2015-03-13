@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-static uint32_t __stakWifiStatus = 1;
+static uint32_t __stakWifiStatus = 0;
 static char* __stakWifiSsid = 0;
 
 //

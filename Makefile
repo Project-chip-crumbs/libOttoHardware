@@ -23,7 +23,7 @@ ${EXECUTABLE}: ${OBJS}
 
 tests/test: build/tests/test.o
 	@echo "Building $@..."
-	@clang++ build/tests/test.o -o tests/test -std=c++11
+	@clang++ build/tests/test.o -o tests/test -std=c++11 -L build -lStakHardware
 
 clean:
 	@echo "Cleaning..."

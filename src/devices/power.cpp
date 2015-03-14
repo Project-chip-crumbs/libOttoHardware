@@ -26,6 +26,17 @@ STAK_EXPORT float stakPowerAverageVoltage() {
 }
 
 
+//
+STAK_EXPORT uint64_t stakPowerTimeToDepletion() {
+  return 2067ULL;
+}
+
+//
+STAK_EXPORT uint64_t stakPowerTimeToFullyCharged() {
+  return 9312ULL;
+}
+
+
 STAK_EXPORT float stakPowerPercent() {
   return __stakPowerCurrentPercent;
 }

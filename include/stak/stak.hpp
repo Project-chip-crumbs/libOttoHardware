@@ -7,4 +7,6 @@
 	#define STAK_EXPORT
 #endif
 
+STAK_EXPORT void stakHardwareInit();
+
 #endif//STAK_HPP

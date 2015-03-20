@@ -1,30 +1,22 @@
-EXECUTABLE=	libStakHardware.a
-SRCS=				src/devices/disk.cpp\
-						src/devices/power.cpp \
-						src/devices/wifi.cpp \
-						src/io/buzzer.cpp \
-						src/io/pwm.cpp
+EXECUTABLE=	tests/test
+SRCS=		tests/test.cpp
 
 OBJS=				$(patsubst %.cpp,	build/%.o,	$(SRCS))
 
-
-all: ${EXECUTABLE} tests/test
-
-
+all: ${EXECUTABLE}
 
 build/%.o: %.cpp
 	@echo "Building $@..."
 	@mkdir -p `dirname $@`
-	@clang++ -I include -fPIC  -c $< -o $@ -g -std=c++11
+	@clang++ -I include -fPIC  -c $< -o $@ -g -std=c++11 -I/usr/local/include
 
 ${EXECUTABLE}: ${OBJS}
 	@echo "Building $@..."
-	@clang++ -shared -fPIC build/src/devices/{disk,power,wifi}.o build/src/io/{buzzer,pwm}.o -o ${EXECUTABLE} -std=c++11
+	@clang++ ${OBJS} -o ${EXECUTABLE} -std=c++11 -L build -lStakHardware -L/usr/local/lib -lwiringPi
 
-tests/test: build/tests/test.o
-	@echo "Building $@..."
-	@clang++ build/tests/test.o -o tests/test -std=c++11 -L build -lStakHardware
-
+run: ${EXECUTABLE}
+	@echo "Running..."
+	${EXECUTABLE}
 clean:
 	@echo "Cleaning..."
-	@rm ${EXECUTABLE} ${OBJS} tests/test build/tests/test.o
+	@rm ${EXECUTABLE} ${OBJS}

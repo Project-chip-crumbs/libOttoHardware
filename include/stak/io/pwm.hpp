@@ -14,4 +14,4 @@ STAK_EXPORT void stakPwmStop( uint32_t pwmChannel );
 STAK_EXPORT void stakPwmChangeFrequency( uint32_t pwmChannel, uint32_t frequency );
 STAK_EXPORT void stakPwmChangeDutyCycle( uint32_t pwmChannel, float dutyCycle );
 
-#endif//STAK_DEVICES_IO_PWM_HPP
+#endif//STAK_IO_PWM_HPP

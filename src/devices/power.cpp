@@ -8,7 +8,14 @@ static float __stakPowerCurrentVoltage = 3.3f;
 static float __stakPowerMaximumVoltage = 4.2f;
 static float __stakPowerAverageVoltage = 3.4f;
 
+static int32_t __stakPowerGaugeDevice = 0;
 
+STAK_EXPORT void stakPowerInit() {
+	//int32_t device = wiringPiI2CSetup( 0x55 );
+	//if (device <= -1) return; // TODO(Wynter): throw some error here please
+
+	//__stakPowerGaugeDevice = device;
+}
 
 //
 STAK_EXPORT float stakPowerCurrentVoltage() {

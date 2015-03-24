@@ -3,6 +3,7 @@
 #include <stak/stak.hpp>
 #include <stak/types.hpp>
 
+STAK_EXPORT void stakPowerInit();
 STAK_EXPORT float stakPowerCurrentVoltage();
 STAK_EXPORT float stakPowerAverageVoltage();
 STAK_EXPORT float stakPowerMaximumVoltage();

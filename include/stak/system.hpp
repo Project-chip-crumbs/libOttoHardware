@@ -4,5 +4,6 @@
 #include <stak/types.hpp>
 
 STAK_EXPORT void stakSystemShutdown( );
+STAK_EXPORT const char* stakSystemCallProcess( const char* processCall );
 
 #endif//STAK_SYSTEM_HPP

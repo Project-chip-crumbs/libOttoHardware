@@ -1,5 +1,6 @@
 #include <iostream>
 #include <stak/stak.hpp>
+#include <stak/system.hpp>
 #include <stak/devices/disk.hpp>
 #include <stak/io/rotary.hpp>
 #include <stak/io/buttons.hpp>
@@ -26,12 +27,13 @@ int main( int argc, char* argv[] ) {
 
   uint64_t diskUsage = stakDiskUsage();
   uint64_t diskSize = stakDiskSize();
+  const char* time_string = stakSystemCallProcess( "date" );
 
   std::cout << "Usage: " << diskUsage / (1024 * 1024 * 1024) << "GiB" << std::endl
             << "Size: " << diskSize / (1024 * 1024 * 1024) << "GiB" << std::endl;
 
   while( true ) {
-    printf("value=%4d, toggle_state=%7s\r", value, toggle_state ? "up!" : "down!");
+    printf("\rvalue=%4d, toggle_state=%7s, date=%32s", value, toggle_state ? "up!" : "down!", time_string);
     usleep(300);
   }
   return 0;

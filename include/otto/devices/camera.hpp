@@ -1,7 +1,7 @@
 #ifndef STAK_DEVICES_CAMERA_HPP
 #define STAK_DEVICES_CAMERA_HPP
-#include <stak/stak.hpp>
-#include <stak/types.hpp>
+#include <otto/otto.hpp>
+#include <otto/types.hpp>
 
 // TODO: Camera api needs a bit of research and thought this should be able to
 // provide full functionality needed to at least generate a basic frame of
@@ -11,10 +11,10 @@
 // We want to avoid the issue that, e.g. GL extensions create however.
 
 #if 0 // disabled until more research is done.
-STAK_EXPORT void stakCameraEnable( uint32_t cameraNumber );
-STAK_EXPORT void stakCameraDisable( uint32_t cameraNumber );
-STAK_EXPORT void stakCameraStart( uint32_t cameraNumber );
-STAK_EXPORT void stakCameraStop( uint32_t cameraNumber );
+STAK_EXPORT void ottoCameraEnable( uint32_t cameraNumber );
+STAK_EXPORT void ottoCameraDisable( uint32_t cameraNumber );
+STAK_EXPORT void ottoCameraStart( uint32_t cameraNumber );
+STAK_EXPORT void ottoCameraStop( uint32_t cameraNumber );
 #endif
 
 #endif//STAK_DEVICES_CAMERA_HPP

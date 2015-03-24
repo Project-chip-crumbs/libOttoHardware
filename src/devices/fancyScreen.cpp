@@ -1,4 +1,4 @@
-#include <stak/devices/fancyScreen.hpp>
+#include <otto/devices/fancyScreen.hpp>
 #include <unistd.h>
 #include <stdlib.h>
 #include <string.h>
@@ -82,7 +82,7 @@ static int fs_write_command_value(uint8_t* command_ptr) {
   return 0;
 }
 
-STAK_EXPORT void stakFancyScreenInit() {
+STAK_EXPORT void ottoFancyScreenInit() {
   static uint8_t screen_init_sequence[] = {
     SEPS114A_SOFT_RESET, 0x00,
     SEPS114A_STANDBY_ON_OFF, 0x01,
@@ -165,7 +165,7 @@ inline uint32_t swap_rgb32 (uint32_t rgb)
              ((rgb >> 8) & 0x00ff00ff));
 }
 
-void stakFancyScreenUpdate( ) {
+void ottoFancyScreenUpdate( ) {
   //
   // Swap framebuffer data in 32 bit blocks
   uint32_t *vmem32 = (uint32_t*)fancy_screen_framebuffer, *vmem32_end = vmem32 + 4608;
@@ -222,15 +222,15 @@ void stakFancyScreenUpdate( ) {
 }
 
 /*
-int stak_seps114a_update(stak_seps114a_s* device) {
-    stak_seps114a_write_command_value(device, SEPS114A_MEMORY_WRITE_READ,0x01);
-    stak_seps114a_write_command_value(device, SEPS114A_MEM_X1,0x00);
-    stak_seps114a_write_command_value(device, SEPS114A_MEM_X2,0x5F);
-    stak_seps114a_write_command_value(device, SEPS114A_MEM_Y1,0x00);
-    stak_seps114a_write_command_value(device, SEPS114A_MEM_Y2,0x5F);
-    stak_seps114a_write_command_value(device, SEPS114A_DISPLAYSTART_X,0x00);
-    stak_seps114a_write_command_value(device, SEPS114A_DISPLAYSTART_Y,0x00);
-    stak_seps114a_write_command(device, SEPS114A_DDRAM_DATA_ACCESS_PORT);
+int otto_seps114a_update(otto_seps114a_s* device) {
+    otto_seps114a_write_command_value(device, SEPS114A_MEMORY_WRITE_READ,0x01);
+    otto_seps114a_write_command_value(device, SEPS114A_MEM_X1,0x00);
+    otto_seps114a_write_command_value(device, SEPS114A_MEM_X2,0x5F);
+    otto_seps114a_write_command_value(device, SEPS114A_MEM_Y1,0x00);
+    otto_seps114a_write_command_value(device, SEPS114A_MEM_Y2,0x5F);
+    otto_seps114a_write_command_value(device, SEPS114A_DISPLAYSTART_X,0x00);
+    otto_seps114a_write_command_value(device, SEPS114A_DISPLAYSTART_Y,0x00);
+    otto_seps114a_write_command(device, SEPS114A_DDRAM_DATA_ACCESS_PORT);
 
 #if 1
     uint32_t *vmem32 = (uint32_t*)device->framebuffer, *vmem32_end = vmem32 + 4608;
@@ -249,6 +249,6 @@ int stak_seps114a_update(stak_seps114a_s* device) {
 #endif
     GPIO_ON(STAK_SEPS114A_PIN_DC);
 
-    stak_seps114a_write_data(device, (uint8_t*)device->framebuffer, 96*96*2);
+    otto_seps114a_write_data(device, (uint8_t*)device->framebuffer, 96*96*2);
     return 0;
 }*/

@@ -1,10 +1,10 @@
-#include <stak/io/buttons.hpp>
+#include <otto/io/buttons.hpp>
 #include <wiringPi.h>
 
 const int pin_button_power = 24;
 const int pin_button_shutter = 23;
 
-STAK_EXPORT void stakButtonPowerSetCallback( button_callback_t callback ) {
+STAK_EXPORT void ottoButtonPowerSetCallback( button_callback_t callback ) {
   static button_callback_t button_callback = nullptr;
   button_callback = callback;
 
@@ -18,7 +18,7 @@ STAK_EXPORT void stakButtonPowerSetCallback( button_callback_t callback ) {
   } );
 }
 
-STAK_EXPORT void stakButtonShutterSetCallback( button_callback_t callback ) {
+STAK_EXPORT void ottoButtonShutterSetCallback( button_callback_t callback ) {
   static button_callback_t button_callback = nullptr;
   button_callback = callback;
 

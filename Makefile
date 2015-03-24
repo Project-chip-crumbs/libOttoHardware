@@ -12,7 +12,7 @@ build/%.o: %.cpp
 
 ${EXECUTABLE}: ${OBJS}
 	@echo "Building $@..."
-	@clang++ ${OBJS} -o ${EXECUTABLE} -std=c++11 -L build -lStakHardware -L/usr/local/lib -lwiringPi
+	@clang++ ${OBJS} -o ${EXECUTABLE} -std=c++11 -L build -lOttoHardware -L/usr/local/lib -lwiringPi
 
 run: ${EXECUTABLE}
 	@echo "Running..."

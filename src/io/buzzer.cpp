@@ -1,4 +1,4 @@
-#include <stak/io/buzzer.hpp>
+#include <otto/io/buzzer.hpp>
 #include <iostream>
 #include <softTone.h>
 
@@ -9,35 +9,35 @@
 // specifics of how pwm translates to audible output
 
 //
-STAK_EXPORT void stakBuzzerEnable( uint32_t pwmChannel ) {
+STAK_EXPORT void ottoBuzzerEnable( uint32_t pwmChannel ) {
   std::cout << "Enabling buzzer on pwm channel "
             << pwmChannel
             << std::endl;
 }
 
 //
-STAK_EXPORT void stakBuzzerDisable( uint32_t pwmChannel ) {
+STAK_EXPORT void ottoBuzzerDisable( uint32_t pwmChannel ) {
   std::cout << "Disabling buzzer on pwm channel "
             << pwmChannel
             << std::endl;
 }
 
 //
-STAK_EXPORT void stakBuzzerStart( uint32_t pwmChannel ) {
+STAK_EXPORT void ottoBuzzerStart( uint32_t pwmChannel ) {
   std::cout << "Starting buzzer on pwm channel "
             << pwmChannel
             << std::endl;
 }
 
 //
-STAK_EXPORT void stakBuzzerStop( uint32_t pwmChannel ) {
+STAK_EXPORT void ottoBuzzerStop( uint32_t pwmChannel ) {
   std::cout << "Stoping buzzer on pwm channel "
             << pwmChannel
             << std::endl;
 }
 
 //
-STAK_EXPORT void stakBuzzerChangeFrequency( uint32_t pwmChannel, uint32_t frequency ) {
+STAK_EXPORT void ottoBuzzerChangeFrequency( uint32_t pwmChannel, uint32_t frequency ) {
   std::cout << "Setting buzzer frequency to "
             << frequency
             << "Hz on pwm channel "
@@ -50,7 +50,7 @@ STAK_EXPORT void stakBuzzerChangeFrequency( uint32_t pwmChannel, uint32_t freque
 // to middle c
 // TODO(Wynter: Should this be relative to A440?
 
-STAK_EXPORT void stakBuzzerChangeNote( uint32_t pwmChannel, int32_t halfSteps ) {
+STAK_EXPORT void ottoBuzzerChangeNote( uint32_t pwmChannel, int32_t halfSteps ) {
   std::cout << "Setting buzzer note to Middle C"
             << halfSteps
             << " steps on pwm channel "
@@ -59,7 +59,7 @@ STAK_EXPORT void stakBuzzerChangeNote( uint32_t pwmChannel, int32_t halfSteps ) 
 }
 
 //
-STAK_EXPORT void stakBuzzerChangeVolume( uint32_t pwmChannel, float volume ) {
+STAK_EXPORT void ottoBuzzerChangeVolume( uint32_t pwmChannel, float volume ) {
   std::cout << "Setting buzzer volume to"
             << volume
             << " on pwm channel "

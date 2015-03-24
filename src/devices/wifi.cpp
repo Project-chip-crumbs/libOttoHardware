@@ -1,42 +1,42 @@
-#include <stak/devices/wifi.hpp>
+#include <otto/devices/wifi.hpp>
 #include <string.h>
 #include <stdlib.h>
 
-static uint32_t __stakWifiStatus = 0;
-static char* __stakWifiSsid = 0;
+static uint32_t __ottoWifiStatus = 0;
+static char* __ottoWifiSsid = 0;
 
 //
-STAK_EXPORT void stakWifiEnable() {
-  __stakWifiStatus = 1;
+STAK_EXPORT void ottoWifiEnable() {
+  __ottoWifiStatus = 1;
 }
 
 //
-STAK_EXPORT void stakWifiDisable() {
-  __stakWifiStatus = 0;
+STAK_EXPORT void ottoWifiDisable() {
+  __ottoWifiStatus = 0;
 }
 
 //
-STAK_EXPORT uint32_t stakWifiIsEnabled() {
-  return __stakWifiStatus;
+STAK_EXPORT uint32_t ottoWifiIsEnabled() {
+  return __ottoWifiStatus;
 }
 
 //
-STAK_EXPORT const char* stakWifiSsid() {
-  if( !__stakWifiSsid ) {
+STAK_EXPORT const char* ottoWifiSsid() {
+  if( !__ottoWifiSsid ) {
     return "";
   }
-  return __stakWifiSsid;
+  return __ottoWifiSsid;
 }
 
 //
-STAK_EXPORT void stakWifiSetSsid(const char* ssid) {
-  if( __stakWifiSsid ) {
-    free( __stakWifiSsid );
+STAK_EXPORT void ottoWifiSetSsid(const char* ssid) {
+  if( __ottoWifiSsid ) {
+    free( __ottoWifiSsid );
   }
   size_t length = strlen( ssid );
-  __stakWifiSsid = static_cast<char*>( malloc( length + 1 ) );
+  __ottoWifiSsid = static_cast<char*>( malloc( length + 1 ) );
 
   // TODO(Wynter): research security concerns regarding memcpy vs strcpy when
   // string length is already known.
-  memcpy( __stakWifiSsid, ssid, length + 1 );
+  memcpy( __ottoWifiSsid, ssid, length + 1 );
 }

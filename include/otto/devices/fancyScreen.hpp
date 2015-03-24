@@ -1,8 +1,8 @@
 #ifndef STAK_DEVICES_FANCYSCREEN_HPP
 #define STAK_DEVICES_FANCYSCREEN_HPP
-#include <stak/stak.hpp>
-#include <stak/types.hpp>
+#include <otto/otto.hpp>
+#include <otto/types.hpp>
 
-STAK_EXPORT void stakFancyScreenInit();
+STAK_EXPORT void ottoFancyScreenInit();
 
 #endif//STAK_IO_BUTTONS_HPP

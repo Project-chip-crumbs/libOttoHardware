@@ -1,6 +1,6 @@
 cmake_minimum_required( VERSION 2.8 )
-project( libStakHardware )
+project( libOttoHardware )
 set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11" )
 include_directories( include )
 file( GLOB_RECURSE src "src/*.cpp" )
-add_library( StakHardware ${src} )
+add_library( OttoHardware ${src} )

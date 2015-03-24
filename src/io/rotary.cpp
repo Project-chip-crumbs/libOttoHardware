@@ -1,4 +1,4 @@
-#include <stak/io/rotary.hpp>
+#include <otto/io/rotary.hpp>
 #include <wiringPi.h>
 
 const int pin_rotary_a = 23;
@@ -24,7 +24,7 @@ STAK_EXPORT void rotary_update( int pin, int state, rotary_callback_t callback )
   }
 }
 
-STAK_EXPORT void stakRotarySetCallback( rotary_callback_t callback ) {
+STAK_EXPORT void ottoRotarySetCallback( rotary_callback_t callback ) {
   static rotary_callback_t rotary_callback = nullptr;
   rotary_callback = callback;
 
@@ -39,7 +39,7 @@ STAK_EXPORT void stakRotarySetCallback( rotary_callback_t callback ) {
   } );
 }
 
-STAK_EXPORT void stakRotaryToggleSetCallback( rotary_toggle_callback_t callback ) {
+STAK_EXPORT void ottoRotaryToggleSetCallback( rotary_toggle_callback_t callback ) {
   static rotary_toggle_callback_t toggle_callback = nullptr;
   toggle_callback = callback;
 

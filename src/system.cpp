@@ -1,11 +1,11 @@
-#include <stak/stak.hpp>
-#include <stak/types.hpp>
+#include <otto/otto.hpp>
+#include <otto/types.hpp>
 #include <string>
 #include <algorithm>
 #include <cstring>
 
 // TODO(Wynter): Support some sort of timeout here
-STAK_EXPORT const char* stakSystemCallProcess( const char* processCall ) {
+STAK_EXPORT const char* ottoSystemCallProcess( const char* processCall ) {
   std::string returnData;
   char buffer[ 2048 ];
 
@@ -31,6 +31,6 @@ STAK_EXPORT const char* stakSystemCallProcess( const char* processCall ) {
 }
 
 
-STAK_EXPORT void stakSystemShutdown( ) {
+STAK_EXPORT void ottoSystemShutdown( ) {
   return;
 }

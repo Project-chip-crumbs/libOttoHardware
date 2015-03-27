@@ -2,5 +2,5 @@
 #include <wiringPi.h>
 
 STAK_EXPORT void ottoHardwareInit() {
-  wiringPiSetupSys();
+  wiringPiSetupGpio();
 }

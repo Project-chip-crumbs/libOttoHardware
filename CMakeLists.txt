@@ -6,7 +6,8 @@ include_directories( SYSTEM "/opt/stak/sdk/include" )
 file( GLOB_RECURSE src "src/*.cpp" "vendor/bcm2835.c" )
 
 add_library( OttoHardware STATIC ${src} ${deps_src} )
-target_include_directories (OttoHardware PUBLIC include)
 target_link_libraries( OttoHardware bcm2835 )
 
-install ( TARGETS OttoHardware EXPORT OttoHardware DESTINATION build )
+# FILE(GLOB_RECURSE files "${CMAKE_CURRENT_SOURCE_DIR}/*.hpp")
+install ( DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/include/otto" DESTINATION ${CMAKE_INSTALL_PREFIX}/include )
+install ( TARGETS OttoHardware EXPORT OttoHardware DESTINATION ${CMAKE_INSTALL_PREFIX}/lib )

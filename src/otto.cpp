@@ -1,6 +1,10 @@
 #include <otto/otto.hpp>
-#include <wiringPi.h>
+#include <bcm2835.h>
 
 STAK_EXPORT void ottoHardwareInit() {
-  wiringPiSetupGpio();
+  bcm2835_init();
+}
+
+STAK_EXPORT void ottoHardwareTerminate() {
+  bcm2835_close();
 }

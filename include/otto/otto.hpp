@@ -8,5 +8,6 @@
 #endif
 
 STAK_EXPORT void ottoHardwareInit();
+STAK_EXPORT void ottoHardwareTerminate();
 
 #endif//STAK_HPP

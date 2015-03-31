@@ -152,19 +152,3 @@ STAK_EXPORT void ottoRotaryToggleSetCallback( rotary_toggle_callback_t callback 
     rot_toggle_thread = std::move(t);
   }
 }
-/*
-
-STAK_EXPORT void ottoRotaryToggleSetCallback( rotary_toggle_callback_t callback ) {
-  static rotary_toggle_callback_t toggle_callback = nullptr;
-  toggle_callback = callback;
-
-  wiringPiISR( pin_rotary_s, INT_EDGE_BOTH, []( ){
-    static volatile int state = -1;
-    int level = digitalRead( pin_rotary_s );
-    if ( state == level )
-      return;
-    state = level;
-    
-    toggle_callback( ( state == 0) );
-  } );
-}*/

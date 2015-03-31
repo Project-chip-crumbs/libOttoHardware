@@ -9,9 +9,8 @@
 #include <sys/ioctl.h>
 #include <assert.h>
 #include <errno.h>
-#include <wiringPi.h>
-#include <wiringPiSPI.h>
 
+#if 0
 
 enum DISPLAY_COMMANDS {
   SEPS114A_SOFT_RESET = 0x01,
@@ -252,3 +251,5 @@ int otto_seps114a_update(otto_seps114a_s* device) {
     otto_seps114a_write_data(device, (uint8_t*)device->framebuffer, 96*96*2);
     return 0;
 }*/
+
+#endif

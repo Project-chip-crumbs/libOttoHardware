@@ -1,6 +1,5 @@
 #include <otto/io/buzzer.hpp>
 #include <iostream>
-#include <softTone.h>
 
 
 // buzzer functionality is essentially a wrapper around pwm functionality with

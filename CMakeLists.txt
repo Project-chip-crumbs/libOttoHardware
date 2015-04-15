@@ -5,7 +5,7 @@ include_directories( include )
 include_directories( SYSTEM "/opt/stak/sdk/include" )
 file( GLOB_RECURSE src "src/*.cpp" "vendor/bcm2835.c" )
 
-add_library( OttoHardware STATIC ${src} ${deps_src} )
+add_library( OttoHardware SHARED ${src} ${deps_src} )
 target_link_libraries( OttoHardware bcm2835 )
 
 # FILE(GLOB_RECURSE files "${CMAKE_CURRENT_SOURCE_DIR}/*.hpp")

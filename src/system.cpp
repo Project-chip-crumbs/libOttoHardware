@@ -32,5 +32,6 @@ STAK_EXPORT const char* ottoSystemCallProcess( const char* processCall ) {
 
 
 STAK_EXPORT void ottoSystemShutdown( ) {
+  ottoSystemCallProcess( "poweroff" );
   return;
 }

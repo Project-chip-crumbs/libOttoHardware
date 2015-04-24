@@ -80,6 +80,7 @@ STAK_EXPORT void ottoRotarySetCallback( rotary_callback_t callback ) {
 
     auto pin_watch = [](int pin_number, int priority){
 
+#if 0
       // set thread priority
       struct sched_param schedule;
       memset (&schedule, 0, sizeof(schedule)) ;
@@ -90,6 +91,7 @@ STAK_EXPORT void ottoRotarySetCallback( rotary_callback_t callback ) {
         schedule.sched_priority = priority;
 
       sched_setscheduler (0, SCHED_RR, &schedule);
+#endif
 
       // open gpio<pin_number>/value
       char filename[64];

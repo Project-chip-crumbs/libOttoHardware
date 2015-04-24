@@ -7,6 +7,7 @@
 	#define STAK_EXPORT
 #endif
 
-STAK_EXPORT void stakHardwareInit();
+STAK_EXPORT void ottoHardwareInit();
+STAK_EXPORT void ottoHardwareTerminate();
 
 #endif//STAK_HPP

@@ -1,11 +1,13 @@
 cmake_minimum_required( VERSION 2.8 )
 project( libOttoHardware )
 set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11" )
-
 include_directories( include )
-include_directories( SYSTEM deps/wiringPi/wiringPi )
+include_directories( SYSTEM "/opt/stak/sdk/include" )
+file( GLOB_RECURSE src "src/*.cpp" "vendor/bcm2835.c" )
 
-file( GLOB_RECURSE src "src/*.cpp" )
-file( GLOB deps_src "deps/wiringPi/wiringPi/*.c" )
+add_library( OttoHardware SHARED ${src} ${deps_src} )
+target_link_libraries( OttoHardware bcm2835 )
 
-add_library( OttoHardware ${src} ${deps_src} )
+# FILE(GLOB_RECURSE files "${CMAKE_CURRENT_SOURCE_DIR}/*.hpp")
+install ( DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/include/otto" DESTINATION ${CMAKE_INSTALL_PREFIX}/include )
+install ( TARGETS OttoHardware EXPORT OttoHardware DESTINATION ${CMAKE_INSTALL_PREFIX}/lib )

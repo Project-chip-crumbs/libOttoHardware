@@ -9,7 +9,6 @@
 static std::thread update_thread;
 extern volatile unsigned long long __ottoDiskUsage_total;
 extern volatile unsigned long long __ottoDiskUsage_used;
-extern volatile char* __ottoWifiSsid;
 volatile bool terminate;
 
 STAK_EXPORT void ottoHardwareInit() {

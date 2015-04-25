@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 static uint32_t __ottoWifiStatus = 0;
-static char* __ottoWifiSsid = 0;
+volatile char* __ottoWifiSsid = 0;
 
 //
 STAK_EXPORT void ottoWifiEnable() {

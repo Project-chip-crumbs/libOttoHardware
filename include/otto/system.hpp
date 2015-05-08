@@ -4,6 +4,7 @@
 #include <otto/types.hpp>
 
 STAK_EXPORT void ottoSystemShutdown( );
+STAK_EXPORT void ottoPowerOff( );
 STAK_EXPORT const char* ottoSystemCallProcess( const char* processCall );
 
 #endif//STAK_SYSTEM_HPP

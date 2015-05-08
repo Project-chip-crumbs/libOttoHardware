@@ -3,6 +3,8 @@
 #include <string>
 #include <algorithm>
 #include <cstring>
+#include <bcm2835.h>
+#include <unistd.h>
 
 // TODO(Wynter): Support some sort of timeout here
 STAK_EXPORT const char* ottoSystemCallProcess( const char* processCall ) {
@@ -32,7 +34,38 @@ STAK_EXPORT const char* ottoSystemCallProcess( const char* processCall ) {
 
 
 STAK_EXPORT void ottoSystemShutdown( ) {
-  ottoSystemCallProcess( "systemctl stop otto-boot" );
-  ottoSystemCallProcess( "poweroff" );
+  ottoSystemCallProcess( "systemctl poweroff" );
+  return;
+}
+
+STAK_EXPORT void ottoPowerOff( ) {
+  int pin=4; 
+ 
+  if( !bcm2835_init() ) {
+      fprintf(stderr,"bcm2835_init() failed\n");
+      return;
+  }
+
+  bcm2835_gpio_fsel( pin, BCM2835_GPIO_FSEL_INPT );
+
+  //bcm2835_gpio_set_pud( pin, BCM2835_GPIO_PUD_UP );
+  //bcm2835_gpio_set_pud( pin, BCM2835_GPIO_PUD_OFF );
+  bcm2835_gpio_set_pud( pin, BCM2835_GPIO_PUD_DOWN );
+
+  uint8_t value = bcm2835_gpio_lev(pin);
+  printf("read from pin %d: %d\n", pin, value);
+  sleep(1);
+  value = bcm2835_gpio_lev(pin);
+  printf("read from pin %d: %d\n", pin, value);
+  sleep(1);
+  value = bcm2835_gpio_lev(pin);
+  printf("read from pin %d: %d\n", pin, value);
+  sleep(1);
+  value = bcm2835_gpio_lev(pin);
+  printf("read from pin %d: %d\n", pin, value);
+  sleep(1);
+
+  bcm2835_close();
+
   return;
 }

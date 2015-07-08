@@ -8,11 +8,15 @@ static char* __ottoWifiSsid = 0;
 //
 STAK_EXPORT void ottoWifiEnable() {
   __ottoWifiStatus = 1;
+  system("systemctl start otto-wifi &");
+  system("systemctl start otto-network-setup &");
 }
 
 //
 STAK_EXPORT void ottoWifiDisable() {
   __ottoWifiStatus = 0;
+  system("systemctl stop otto-wifi &");
+  system("systemctl stop otto-network-setup &");
 }
 
 //

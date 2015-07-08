@@ -35,5 +35,6 @@ STAK_EXPORT void ottoHardwareInit() {
 STAK_EXPORT void ottoHardwareTerminate() {
   terminate = true;
   update_thread.join();
+  //ottoPowerTerminate();
   bcm2835_close();
 }

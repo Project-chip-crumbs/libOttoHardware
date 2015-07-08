@@ -18,9 +18,10 @@ static float    __ottoPowerMaximumVoltage    = 4.2f;
 static int32_t  __ottoPowerGaugeDevice       = 0;
 
 #define NEW_DEVICE_FILE "/sys/class/i2c-dev/i2c-1/device/new_device"
-#define VOLTAGE_FILE    "/sys/class/power_supply/bq27510-0/voltage_now"
-#define STATUS_FILE     "/sys/class/power_supply/bq27510-0/status"
-#define CURRENT_FILE    "/sys/class/power_supply/bq27510-0/current_now"
+#define DELETE_DEVICE_FILE "/sys/class/i2c-dev/i2c-1/device/delete_device"
+#define VOLTAGE_FILE    "/sys/class/power_supply/bq27500-0/voltage_now"
+#define STATUS_FILE     "/sys/class/power_supply/bq27500-0/status"
+#define CURRENT_FILE    "/sys/class/power_supply/bq27500-0/current_now"
 
 //PRIVATE
 void getValue(const char * FILENAME, std::string &r)
@@ -59,7 +60,8 @@ void getValue(const char *FILENAME, float &f)
 
 
 STAK_EXPORT void ottoPowerInit() {
-  if(!__ottoPowerInitialized) {
+	__ottoPowerInitialized = true;
+  /*if(!__ottoPowerInitialized) {
     std::ofstream ofs;
     ofs.open (NEW_DEVICE_FILE, std::ifstream::out);
     if(ofs.good()) {
@@ -67,14 +69,35 @@ STAK_EXPORT void ottoPowerInit() {
       __ottoPowerInitialized = true;
     }
     ofs.close();
-  }
+  }*/
+}
+
+STAK_EXPORT void ottoPowerTerminate() {
+  /*if(__ottoPowerInitialized) {
+    std::ofstream ofs;
+    ofs.open (DELETE_DEVICE_FILE, std::ifstream::out);
+    if(ofs.good()) {
+      ofs<< "0x55\n";
+      __ottoPowerInitialized = true;
+    }
+    ofs.close();
+  }*/
 }
 
 //
 STAK_EXPORT float ottoPowerVoltage_V() {
   float f;
+  static float last_v = 0.0;
   getValue(VOLTAGE_FILE,f);
+
   f/=1e6;
+  if(f < 0.0) {
+    f = last_v;
+  } else {
+    last_v = f;
+  }
+  if(f > __ottoPowerMaximumVoltage)
+     f = __ottoPowerMaximumVoltage;
   __ottoPowerVoltage_V=f;
   return __ottoPowerVoltage_V;
 }
@@ -102,10 +125,16 @@ STAK_EXPORT uint64_t ottoPowerTimeToFullyCharged() {
 
 STAK_EXPORT float ottoPowerCharge_Percent() {
   float f;
+  static float last_p = 0.0;
   getValue(VOLTAGE_FILE,f);
   f/=1e6;
   f-=3.3;
-  f/=0.008;
+  f/=0.007;
+  if(f<0.0) {
+     f = last_p;
+  } else {
+    last_p = f;
+  }
   if(f>100.0)
      f=100.0;
 
@@ -117,7 +146,16 @@ STAK_EXPORT uint32_t ottoPowerIsCharging() {
   std::string s;
   
   getValue(STATUS_FILE,s);
-  __ottoPowerChargingStatus = (s!="Discharging");
+  __ottoPowerChargingStatus = (s=="Charging");
+
+  return __ottoPowerChargingStatus;
+}
+
+STAK_EXPORT uint32_t ottoPowerIsFull() {
+  std::string s;
+  
+  getValue(STATUS_FILE,s);
+  __ottoPowerChargingStatus = (s=="Full");
 
   return __ottoPowerChargingStatus;
 }

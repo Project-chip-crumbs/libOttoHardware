@@ -7,10 +7,10 @@ include_directories( SYSTEM "/opt/stak/sdk/include" )
 file( GLOB_RECURSE src "src/*.cpp" "vendor/bcm2835.c" )
 
 add_library( OttoHardware SHARED ${src} ${deps_src} )
-target_link_libraries( OttoHardware bcm2835 )
+target_link_libraries( OttoHardware )
 
 add_executable( otto-poweroff tools/otto-poweroff.cpp )
-target_link_libraries( otto-poweroff OttoHardware bcm2835 )
+target_link_libraries( otto-poweroff OttoHardware )
 
 # FILE(GLOB_RECURSE files "${CMAKE_CURRENT_SOURCE_DIR}/*.hpp")
 install ( DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/include/otto" DESTINATION ${CMAKE_INSTALL_PREFIX}/include )
